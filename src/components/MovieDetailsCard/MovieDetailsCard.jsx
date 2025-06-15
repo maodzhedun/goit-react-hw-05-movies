@@ -17,8 +17,8 @@ const MovieDetailsCard = () => {
             </nav>
 
             <Route>
-                <Route path={/movies/:movieId/cast} component={Cast} />
-                <Route path={/movies/:movieId/reviews} component={Reviews} />
+                <Route path={`/movies/:movieId/cast`} component={Cast} />
+                <Route path={`/movies/:movieId/reviews`} component={Reviews} />
             </Route>
         </div>
     );
