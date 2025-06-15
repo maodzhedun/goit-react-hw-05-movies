@@ -3,7 +3,7 @@ import { useParams, Link, Route, useLocation } from 'react-router-dom';
 import Cast from './Cast';
 import Reviews from './Reviews';
 
-const MovieDetailsCard = () => {
+const MovieDetailsCard = (movieId) => {
  
 
 
