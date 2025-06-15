@@ -1,33 +1,24 @@
 import Home from 'pages/Home';
 import MovieDetails from 'pages/MovieDetails';
 import Movies from 'pages/Movies';
-import { NavLink, Route, Routes } from 'react-router-dom';
+import NotFound from 'pages/NotFound';
+import { Route, Routes } from 'react-router-dom';
+import Layout from './Layout/Layout';
+import Cast from './Cast/Cast';
+import Reviews from './Reviews/Reviews';
 
 export const App = () => {
   return (
-    <div
-      // style={{
-      //   height: '100vh',
-      //   display: 'flex',
-      //   justifyContent: 'center',
-      //   alignItems: 'center',
-      //   fontSize: 40,
-      //   color: '#010101',
-      // }}
-    >
-      
-<nav>
-  <NavLink to='/'>Home Page</NavLink>
-  <NavLink to='/Movies'>Movies</NavLink>
-  <NavLink to='/MovieDetails'>MovieDetails</NavLink>
-</nav>
-
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/Movies" element={<Movies />}></Route>
-        <Route path="/MovieDetails" element={<MovieDetails />}></Route>
-        {/* <Route path="*" element={<NotFound />} /> */}
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="movies" element={<Movies />} />
+        <Route path="movies/:movieId" element={<MovieDetails />}>
+          <Route path="cast" element={<Cast />} />
+          <Route path="reviFews" element={<Reviews />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
   );
 };
