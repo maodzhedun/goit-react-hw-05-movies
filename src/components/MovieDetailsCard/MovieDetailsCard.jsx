@@ -12,8 +12,8 @@ const MovieDetailsCard = () => {
             <h1>Деталі фільму {movieId}</h1>
             {/* Логіка для відображення деталей фільму */}
             <nav>
-                <Link to={/movies/${movieId}/cast}>Акторський склад</Link>
-                <Link to={/movies/${movieId}/reviews}>Огляди</Link>
+                <Link to={`/movies/${movieId}/cast`}>Акторський склад</Link>
+                <Link to={`/movies/${movieId}/reviews`}>Огляди</Link>
             </nav>
 
             <Route>
