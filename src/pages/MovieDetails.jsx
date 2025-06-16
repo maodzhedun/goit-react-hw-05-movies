@@ -1,6 +1,6 @@
 import Error from 'components/Error/Error';
 import React, { useEffect, useState } from 'react';
-import {  Outlet,   useLocation, useParams } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import { getMovieDetails } from 'services/api-movies';
 import MovieDetailsCard from 'components/MovieDetailsCard/MovieDetailsCard';
 import Loader from 'components/Loader/Loader';
@@ -17,7 +17,7 @@ const MovieDetails = () => {
       try {
         console.log(id);
         const dataMovie = await getMovieDetails(id);
-        console.log(dataMovie)
+        console.log(dataMovie);
         setMovie(dataMovie);
         setLoading(true);
       } catch (error) {
@@ -42,8 +42,7 @@ const MovieDetails = () => {
       MovieDetails
       {error && <Error />}
       {loading ? <MovieDetailsCard movie={movie} /> : <Loader />}
-      <Outlet/>
- 
+      <Outlet />
     </div>
   );
 };
