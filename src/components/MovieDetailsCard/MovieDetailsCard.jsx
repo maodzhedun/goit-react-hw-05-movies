@@ -1,12 +1,12 @@
-import { useState } from 'react';
-import { useParams, Link, Routes, Route, useLocation } from 'react-router-dom';
+// import { useState } from 'react';
+import { Link, Routes, Route, useLocation } from 'react-router-dom';
 import Cast from 'components/Cast/Cast';
 import Reviews from 'components/Reviews/Reviews';
 
 const MovieDetailsCard = ({movie}) => {
      const location = useLocation();
      const movieId = movie.id;
-     const baseUrlImg = 'https://image.tmdb.org/t/p/w300';
+    //  const baseUrlImg = 'https://image.tmdb.org/t/p/w300';
   return (
     <div>
       MovieDetails

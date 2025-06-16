@@ -1,6 +1,6 @@
 import Error from 'components/Error/Error';
 import React, { useEffect, useState } from 'react';
-import { Link, Outlet, Route, Routes, useLocation, useParams } from 'react-router-dom';
+import {  Outlet,   useLocation, useParams } from 'react-router-dom';
 import { getMovieDetails } from 'services/api-movies';
 import MovieDetailsCard from 'components/MovieDetailsCard/MovieDetailsCard';
 import Loader from 'components/Loader/Loader';
