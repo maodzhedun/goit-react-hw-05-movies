@@ -1,54 +1,49 @@
-import Cast from 'components/Cast/Cast';
-import Reviews from 'components/Reviews/Reviews';
+import Error from 'components/Error/Error';
 import React, { useEffect, useState } from 'react';
-import { Link, Route, Routes, useLocation, useParams } from 'react-router-dom';
+import { Link, Outlet, Route, Routes, useLocation, useParams } from 'react-router-dom';
 import { getMovieDetails } from 'services/api-movies';
+import MovieDetailsCard from 'components/MovieDetailsCard/MovieDetailsCard';
+import Loader from 'components/Loader/Loader';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
   const location = useLocation();
   const [movie, setMovie] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const fetchMovieDetails = async () => {
+    const fetchMovieDetails = async id => {
       try {
-        const dataMovie = await getMovieDetails();
+        console.log(id);
+        const dataMovie = await getMovieDetails(id);
+        console.log(dataMovie)
         setMovie(dataMovie);
+        setLoading(true);
       } catch (error) {
-        console.error('Error fetching movie details:', error);
+        setError(error.message);
+        console.log(error.message);
+        setLoading(false);
       }
     };
-    fetchMovieDetails();
+    fetchMovieDetails(movieId);
+
+    return () => {
+      fetchMovieDetails(movieId);
+    };
   }, [movieId]);
 
-  if (!movie) {
-    return <p>Завантаження...</p>;
-  }
-  
+  // if (!movie) {
+  //   return <p>Завантаження...</p>;
+  // }
+
   return (
     <div>
       MovieDetails
-      <button type="button">Go back</button>
-      <h1>{movie.original_title}</h1>
-            <img src={movie.poster_path} alt={movie.original_title} />
-            <p><strong>Огляд:</strong> {movie.overview}</p>
-            <p><strong>Рейтинг:</strong> {movie.vote_average}</p>
-            <p>
-                <strong>Жанри:</strong> 
-                {movie.genres && movie.genres.length > 0 
-                    ? movie.genres.map(genre => genre.name).join(', ') 
-                    : 'Немає жанрів'}
-            </p>
-            
-            <nav>
-                <Link to={`/movies/${movieId}/cast`} state={{ from: location }}>Акторський склад</Link>
-                <Link to={`/movies/${movieId}/reviews`} state={{ from: location }}>Огляди</Link>
-            </nav>
-
-            <Routes>
-                <Route path="cast" element={<Cast />} />
-                <Route path="reviews" element={<Reviews />} />
-            </Routes>
+      {error && <Error />}
+      {loading ? <MovieDetailsCard movie={movie} /> : <Loader />}
+      <Outlet/>
+ 
     </div>
   );
 };

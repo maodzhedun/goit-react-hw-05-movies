@@ -8,56 +8,30 @@ axios.defaults.params = {
 };
 
 export const getTrendingMovies = async () => {
-    try {
-        const response = await axios.get(`${BASE_URL}/trending/movie/day`);
-        return response.data.results;
-    } catch (error) {
-        console.error('Error fetching trending movies:', error);
-        throw error;
-    }
+  const response = await axios.get(`${BASE_URL}/trending/movie/day`);
+  return response.data.results;
 };
 
-
-export const searchMovies = async (query) => {
-    try {
-        const response = await axios.get(`${BASE_URL}/search/movie`, {
-            params: {
-                query: query,
-            },
-        });
-        return response.data.results;
-    } catch (error) {
-        console.error('Error searching movies:', error);
-        throw error;
-    }
+export const searchMovies = async query => {
+  const response = await axios.get(`${BASE_URL}/search/movie`, {
+    params: {
+      query: query,
+    },
+  });
+  return response.data.results;
 };
 
-export const getMovieDetails = async (movieId) => {
-    try {
-        const response = await axios.get(`${BASE_URL}/movie/${movieId}`);
-        return response.data;
-    } catch (error) {
-        console.error('Error fetching movie details:', error);
-        throw error;
-    }
+export const getMovieDetails = async id => {
+  const response = await axios.get(`${BASE_URL}/movie/${id}`);
+  return response.data;
 };
 
-export const getMovieCredits = async (movieId) => {
-    try {
-        const response = await axios.get(`${BASE_URL}/movie/${movieId}/credits`);
-        return response.data.cast;
-    } catch (error) {
-        console.error('Error fetching movie credits:', error);
-        throw error;
-    }
+export const getMovieCredits = async id => {
+  const response = await axios.get(`${BASE_URL}/movie/${id}/credits`);
+  return response.data.cast;
 };
 
-export const getMovieReviews = async (movieId) => {
-    try {
-        const response = await axios.get(`${BASE_URL}/movie/${movieId}/reviews`);
-        return response.data.results;
-    } catch (error) {
-        console.error('Error fetching movie reviews:', error);
-        throw error;    
-    }
+export const getMovieReviews = async id => {
+  const response = await axios.get(`${BASE_URL}/movie/${id}/reviews`);
+  return response.data.results;
 };
