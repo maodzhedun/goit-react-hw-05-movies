@@ -12,12 +12,10 @@ export const getTrendingMovies = async () => {
   return response.data.results;
 };
 
-export const searchMovies = async query => {
-  const response = await axios.get(`${BASE_URL}/search/movie`, {
-    params: {
-      query: query,
-    },
-  });
+export const searchMovies = async (query, page = 1) => {
+  const response = await axios.get(
+    `${BASE_URL}/search/movie?query=${query}&page=${page}`
+  );
   return response.data.results;
 };
 

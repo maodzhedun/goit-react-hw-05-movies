@@ -8,7 +8,7 @@ const Layout = () => {
           <NavLink to="/">Home Page</NavLink>
         </li>
         <li>
-          <NavLink to="/Movies">Movies</NavLink>
+          <NavLink to="/movies">Movies</NavLink>
         </li>
       </ul>
       <main>

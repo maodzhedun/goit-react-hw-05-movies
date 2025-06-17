@@ -6,7 +6,7 @@ import { getTrendingMovies } from 'services/api-movies';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -14,6 +14,7 @@ const Home = () => {
       try {
         const trendingMovies = await getTrendingMovies();
         setMovies(trendingMovies);
+        // console.log(movies)
         setLoading(true);
       } catch (error) {
         setError(error.message);

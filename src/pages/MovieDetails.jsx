@@ -7,19 +7,16 @@ import Loader from 'components/Loader/Loader';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
-  // const location = useLocation();
-  const [movie, setMovie] = useState(null);
-  const [error, setError] = useState(null);
+  const [movie, setMovie] = useState({});
+  const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchMovieDetails = async id => {
+      setLoading(true);
       try {
-        console.log(id);
         const dataMovie = await getMovieDetails(id);
-        console.log(dataMovie);
         setMovie(dataMovie);
-        setLoading(true);
       } catch (error) {
         setError(error.message);
         console.log(error.message);
@@ -33,13 +30,8 @@ const MovieDetails = () => {
     };
   }, [movieId]);
 
-  // if (!movie) {
-  //   return <p>Завантаження...</p>;
-  // }
-
   return (
     <div>
-      MovieDetails
       {error && <Error />}
       {loading ? <MovieDetailsCard movie={movie} /> : <Loader />}
       <Outlet />
