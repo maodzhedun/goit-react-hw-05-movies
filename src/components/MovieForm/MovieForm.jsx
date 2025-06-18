@@ -1,4 +1,5 @@
 import React from 'react';
+import { Label, Input } from "./MovieForm.styled";
 
 const MovieForm = ({ onQuery, queryParams, setPage }) => {
   const onSearch = event => {
@@ -9,14 +10,14 @@ const MovieForm = ({ onQuery, queryParams, setPage }) => {
   };
 
   return (
-    <label>
-      <input
+    <Label>
+      <Input
         type="text"
         placeholder="Search movies"
         value={queryParams}
         onChange={onSearch}
       />
-    </label>
+    </Label>
   );
 };
 

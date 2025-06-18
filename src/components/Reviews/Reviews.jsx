@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import Error from 'components/Error/Error';
 import Loader from 'components/Loader/Loader';
 import ReviewsList from '../Reviews/ReviewsList/ReviewsList';
+import { Container, NoReviews } from "./Reviews.styled";
 
 const Reviews = () => {
   const { movieId } = useParams();
@@ -32,14 +33,14 @@ const Reviews = () => {
   }
 
   return (
-    <div>
+    <Container>
       {error && <Error message={error} />}
       {reviews.length > 0 ? (
         <ReviewsList reviews={reviews} />
       ) : (
-        <h3>We don't have any reviews for this movie</h3>
+        <NoReviews>We don't have any reviews for this movie</NoReviews>
       )}
-    </div>
+    </Container>
   );
 };
 

@@ -1,15 +1,16 @@
 import React from 'react';
 import ReviewsItem from '../ReviewsItem/ReviewsItem';
+import { List, Item } from "./ReviewsList.styled";
 
 const ReviewsList = ({ reviews }) => {
   return (
-    <div>
+    <List>
       {reviews.map(({ id, author, content }) => (
-        <li key={id}>
+        <Item key={id}>
           <ReviewsItem author={author} content={content} />
-        </li>
+        </Item>
       ))}
-    </div>
+    </List>
   );
 };
 

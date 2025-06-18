@@ -1,20 +1,21 @@
 import React from 'react';
 import CastItem from '../CastItem/CastItem';
+import { List,Item } from "./CastList.styled";
 
 const CastList = ({ cast }) => {
   // console.log(cast);
   return (
-    <div>
+    <List>
       {cast.map(({ id, name, character, profile_path }) => (
-        <li key={id}>
+        <Item key={id}>
           <CastItem
             name={name}
             character={character}
             profile_path={profile_path}
           />
-        </li>
+        </Item>
       ))}
-    </div>
+    </List>
   );
 };
 

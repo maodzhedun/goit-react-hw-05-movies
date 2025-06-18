@@ -1,13 +1,14 @@
 import React from 'react'
+import { Container, Photo, Name, Character } from "./CastItem.styled";
 
 const CastItem = ({name, character, profile_path}) => {
     const baseUrlImg = 'https://image.tmdb.org/t/p/w200';
   return (
-    <div>
-      <img src={`${baseUrlImg}${profile_path}`} alt={name} />
-      <h3>{name}</h3>
-      <p>{character}</p>
-    </div>
+    <Container>
+      <Photo src={`${baseUrlImg}${profile_path}`} alt={name} />
+      <Name>{name}</Name>
+      <Character>{character}</Character>
+    </Container>
     
   )
 }

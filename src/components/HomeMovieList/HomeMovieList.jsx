@@ -1,9 +1,10 @@
 import React from 'react';
 import HomeMovieItem from 'components/HomeMovieItem/HomeMovieItem';
+import { List } from './HomeMovieList.styled';
 
 const HomeMovieList = ({ movies }) => {
   return (
-    <div className="home-movie-list">
+    <List>
       {movies.map(({ id, title, poster_path }) => (
         <HomeMovieItem
           key={id}
@@ -12,7 +13,7 @@ const HomeMovieList = ({ movies }) => {
           poster_path={poster_path}
         />
       ))}
-    </div>
+    </List>
   );
 };
 

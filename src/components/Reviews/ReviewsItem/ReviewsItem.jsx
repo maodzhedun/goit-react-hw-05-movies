@@ -1,11 +1,12 @@
 import React from 'react';
+import { Container, Author, Content } from "./ReviewsItem.styled";
 
 const ReviewsItem = ({ author, content }) => {
   return (
-    <div>
-      <h3>{author}</h3>
-      <p>{content}</p>
-    </div>
+    <Container>
+      <Author>{author}</Author>
+      <Content>{content}</Content>
+    </Container>
   );
 };
 

@@ -1,22 +1,23 @@
 import { Link } from 'react-router-dom';
 import MovieCardItem from './MovieCardItem/MovieCardItem';
+import  {CardContainer, Nav, NavList, NavLink} from './MovieDetailsCard.styled';
 
 const MovieDetailsCard = ({ movie }) => {
   return (
-    <div>
+    <CardContainer>
       <MovieCardItem movie={movie} />
 
-      <nav>
-        <ul>
-          <li>
-            <Link to="cast">Акторський склад</Link>
-          </li>
-          <li>
-            <Link to="reviews">Огляди</Link>
-          </li>
-        </ul>
-      </nav>
-    </div>
+      <Nav>
+        <NavList>
+          <NavLink>
+            <Link to="cast">Cast</Link>
+          </NavLink>
+          <NavLink>
+            <Link to="reviews">Reviews</Link>
+          </NavLink>
+        </NavList>
+      </Nav>
+    </CardContainer>
   );
 };
 

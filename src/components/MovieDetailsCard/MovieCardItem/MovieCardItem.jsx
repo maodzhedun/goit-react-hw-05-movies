@@ -1,33 +1,42 @@
 import React, { useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import {
+  Container,
+  Info,
+  Poster,
+  Title,
+  Paragraph,
+  BackLink,
+} from './MovieCardItem.styled';
 
 const MovieCardItem = ({ movie }) => {
   const location = useLocation();
   const backLink = useRef(location.state?.from ?? '/');
   const baseUrlImg = 'https://image.tmdb.org/t/p/w300';
 
-  const {original_title,poster_path, overview,vote_average, genres} = movie
+  const { original_title, poster_path, overview, vote_average, genres } = movie;
   return (
-    <div>
-      <Link to={backLink.current}>Go back</Link>
-      <h1>{original_title}</h1>
-      <img
-        src={`${baseUrlImg}${poster_path}`}
-        alt={original_title}
-      />
-      <p>
-        <strong>Огляд:</strong> {overview}
-      </p>
-      <p>
-        <strong>Рейтинг:</strong> {vote_average}
-      </p>
-      <p>
-        <strong>Жанри:</strong>
-        {genres && genres.length > 0
-          ? genres.map(genre => genre.name).join(', ')
-          : 'Немає жанрів'}
-      </p>
-    </div>
+    <Container>
+      <Info>
+        <BackLink>
+          <Link to={backLink.current}>Go back</Link>
+        </BackLink>
+        <Title>{original_title}</Title>
+        <Poster src={`${baseUrlImg}${poster_path}`} alt={original_title} />
+        <Paragraph>
+          <strong>Overview:</strong> {overview}
+        </Paragraph>
+        <Paragraph>
+          <strong>Rating:</strong> {vote_average}
+        </Paragraph>
+        <Paragraph>
+          <strong>Genres:</strong>
+          {genres && genres.length > 0
+            ? genres.map(genre => genre.name).join(', ')
+            : 'Non Genres'}
+        </Paragraph>
+      </Info>
+    </Container>
   );
 };
 

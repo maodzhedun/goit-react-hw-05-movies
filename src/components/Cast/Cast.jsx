@@ -16,7 +16,6 @@ const Cast = () => {
       try {
         const dataCredits = await getMovieCredits(id);
         setCast(dataCredits);
-        // console.log(cast);
       } catch (error) {
         setError(error.message);
         console.log(error.message);
@@ -27,9 +26,8 @@ const Cast = () => {
   }, [movieId]);
   return (
     <div>
-      {/* <h2>Акторський склад:</h2> */}
       {error && <Error />}
-      {loading ? <CastList cast={cast}/> : <Loader />}
+      {loading ? <CastList cast={cast} /> : <Loader />}
     </div>
   );
 };
