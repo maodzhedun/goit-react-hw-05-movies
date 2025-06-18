@@ -16,7 +16,7 @@ export const searchMovies = async (query, page = 1) => {
   const response = await axios.get(
     `${BASE_URL}/search/movie?query=${query}&page=${page}`
   );
-  return response.data.results;
+  return response.data;
 };
 
 export const getMovieDetails = async id => {

@@ -1,9 +1,10 @@
 import Error from 'components/Error/Error';
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
 import { getMovieDetails } from 'services/api-movies';
 import MovieDetailsCard from 'components/MovieDetailsCard/MovieDetailsCard';
 import Loader from 'components/Loader/Loader';
+import { Container, Section } from "../components/App.styled";
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -31,11 +32,15 @@ const MovieDetails = () => {
   }, [movieId]);
 
   return (
-    <div>
+    <Container>
+      <Section>
       {error && <Error />}
       {loading ? <MovieDetailsCard movie={movie} /> : <Loader />}
-      <Outlet />
-    </div>
+      <Suspense fallback={<div>Loading page ...</div>}>
+        <Outlet />
+      </Suspense>
+      </Section>
+    </Container>
   );
 };
 
